@@ -18,11 +18,7 @@ RUN apt-get update && apt-get install -y \
 # Set work directory
 WORKDIR /app
 
-# Pre-install wheels (optional)
-COPY wheels /wheels
-RUN pip install --no-cache-dir /wheels/*
-
-# Copy requirements and install remaining packages
+# Copy requirements and install packages
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir --prefer-binary -r requirements.txt
 
